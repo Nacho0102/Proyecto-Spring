@@ -41,6 +41,7 @@ public class Controller23ModificarSalarioPlantilla implements Controller{
             {
              int idsalario = Integer.parseInt(sal);
 //             jdbc.modificarEmpleado(idsalario);
+             
             }
           
         }else{

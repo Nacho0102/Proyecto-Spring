@@ -16,6 +16,20 @@
           p:location="/WEB-INF/jdbc.properties" />
 
     
+          <bean id="dataSourceSQL"
+                class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+                p:driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                p:url="jdbc:sqlserver://LOCALHOST:1433;databaseName=PELICULAS_NACHO"
+                p:username="SA"
+                p:password="" />
+          
+                <bean id="CONEXIONPELICULAS"
+                      class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+                      p:url="jdbc:sqlserver://LOCALHOST:1433;databaseName=PELICULAS_NACHO"
+                      p:driverClassName="${jdbcSQL.driverClassName}"
+                      p:username="SA"
+                      p:password=""/>
+    
     <bean id="dataSourceORACLE"
         class="org.springframework.jdbc.datasource.DriverManagerDataSource"
         p:driverClassName="${jdbc.driverClassName}"
@@ -47,15 +61,15 @@
           p:modelo="Panda"
           p:precio="150.000€"/>
     
-<!--    <bean id="OTROCoche"
-          class="objetos.Coche"
-          p:marca="Seat"
-          p:modelo="Leon"
-          p:precio="${objetoCoche.precio}"/>-->
+    <!--    <bean id="OTROCoche"
+    class="objetos.Coche"
+    p:marca="Seat"
+    p:modelo="Leon"
+    p:precio="${objetoCoche.precio}"/>-->
     
     <bean id="jdbcPrincipal"
           class="dao.JdbcDepartamentoDao">
-    <property name="dataSource" ref="dataSourceORACLE"/>
+        <property name="dataSource" ref="dataSourceORACLE"/>
 
     </bean>
     
@@ -67,6 +81,11 @@
     <bean id="jdbcPlantilla"
           class="dao.JdbcPlantillaDao">
         <property name="dataSource" ref="dataSourceORACLE"/>
+    </bean>
+    
+    <bean id="jdbcClientes"
+          class="dao.JdbcClientesDaoSupport">
+        <property name="dataSource" ref="CONEXIONPELICULAS"/>
     </bean>
     
 
