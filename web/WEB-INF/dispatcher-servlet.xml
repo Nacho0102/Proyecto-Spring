@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- was: <?xml version="1.0" encoding="UTF-8"?> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+
+    <!--
+    DECLARACION DE LOS CONTROLADORES
+    -->
+    <bean class="controladores.Controller01PrimeraVista"
+          id="controller01"/>
+    <bean class="controladores.Controller02InfoControladorVista"
+          id="controller02"/>
+    <bean class="controladores.Controller03InfoVistaControlador"
+          id="controller03"/>
+    <bean class="controladores.Controller04TablaMultiplicar"
+          id="controller04"/>
+    <bean class="controladores.Controller05ObjetosContainer"
+          id="controller05"/>
+    
+    <bean class="controladores.Controller06DatosApplicationContext"
+          id="controller06"/>
+    
+    <bean class="controladores.Controller07EliminarEnfermo"
+          id="controller07"/>
+    
+    
+    <bean class="controladores.Controller08MultiplesAcciones"
+          id="controller08">
+          <property name="methodNameResolver">
+              <bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+                  <property name="paramName" value="operacion"/>
+              </bean>
+          </property>  
+    </bean>
+    
+    <bean class="controladores.Controller09Departamentos"
+          id="controller09">
+          <property name="methodNameResolver">
+              <bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+                  <property name="paramName" value="operacion"/>
+              </bean>
+          </property>  
+    </bean>
+    
+    <bean class="controladores.Controller10Peliculas"
+          id="controller10">
+          <property name="methodNameResolver">
+              <bean class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+                  <property name="paramName" value="operacion"/>
+              </bean>
+          </property>  
+    </bean>
+    
+    <bean class="controladores.Controller11CrearSession"
+          id="controller11crear">
+    </bean>
+    
+    <bean class="controladores.Controller11MostrarSession"
+              id="controller11mostrar">
+    </bean>
+
+    <bean class="controladores.Controller12AlmacenarSalarioEmpleados"
+              id="controller12">
+    </bean>
+    
+    <bean class="controladores.Controller13AlmacenarEmpleados"
+              id="controller13">
+    </bean>
+    
+     
+   <bean class="controladores.Controller13ResumenEmpleados"
+          id="controller13resumen"/>
+    
+
+   
+   <bean class="controladores.Controller14ValidarDoctor"
+          id="controller14validar"
+          scope="session"/>
+    
+    <bean class="controladores.Controller14ModificarDoctor"
+          id="controller14modificar"/>
+   
+    
+    <bean class="controladores.Controller15PeliculasGeneros"
+          id="controller15pelisgeneros"/>    
+
+    <bean class="controladores.Controller15DetallesPelicula"
+          id="controller15detalles"/>        
+    
+    <bean class="controladores.Controller15CarritoCompra"
+          id="controller15carrito"/>        
+            
+    
+     <bean class="controladores.Controller16NombreDepartamentoDao"
+          id="controller16"/>    
+    
+     <bean class="controladores.Controller17ConsultaSeleccionDao"
+          id="controller17"/>   
+     
+      <bean class="controladores.Controller18ConsultasParametrizadas"
+          id="controller18"/>  
+      
+       <bean class="controladores.Controller19ModificarDepartamentosDao"
+          id="controller19"/>  
+       
+       <bean class="controladores.Controller20InsertarDepartamentoDao"
+          id="controller20"/>  
+       
+       <bean class="controladores.Controller21EliminarDepartamentosBatch"
+          id="controller21"/>  
+     
+       <bean class="controladores.Controller22BuscarEmpleadosOficio"
+          id="controller22"/>  
+       
+       <bean class="controladores.Controller23ModificarSalarioPlantilla"
+          id="controller23"/> 
+    <!--
+    Most controllers will use the ControllerClassNameHandlerMapping above, but
+    for the index controller we are using ParameterizableViewController, so we must
+    define an explicit mapping for it.
+    -->
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="index.htm">indexController</prop>
+                
+<!--                ASOCIAR LAS VISTAS A CADA CONTROLADOR-->
+
+                <prop key="Web01PrimeraVista.htm">controller01</prop>
+                <prop key="Web02InfoControladorVista.htm">controller02</prop>
+                <prop key="Web03InfoVistaControlador.htm">controller03</prop>
+                <prop key="Web04MostrarTablaMultiplicar.htm">controller04</prop>
+                <prop key="Web04PedirNumero.htm">pedirNumeroController</prop>
+                <prop key="Web05ObjetosContainer.htm">controller05</prop>
+                <prop key="Web06DatosApplicationContext.htm">controller06</prop>
+                <prop key="Web07EliminarEnfermo.htm">controller07</prop>
+                <prop key="Web08MultiplesAcciones.htm">controller08</prop>
+                <prop key="Web09Departamentos.htm">controller09</prop>
+                <prop key="Web10MostrarPeliculas.htm">controller10</prop>
+                <prop key="Web10MostrarArgumentosPeliculas.htm">controller10</prop>
+                <prop key="Web11CrearSession.htm">controller11crear</prop>
+                <prop key="Web11MostrarSession.htm">controller11mostrar</prop>
+                <prop key="Web12AlmacenarSalarioEmpleados.htm">controller12</prop>
+                <prop key="Web12MostrarSalarioEmpleados.htm">mostrarSalarioSessionController</prop>
+                <prop key="Web13AlmacenarEmpleadoSession.htm">controller13</prop>
+                <prop key="Web13MostrarEmpleadoSession.htm">controller13resumen</prop>
+                <prop key="Web14ValidarDoctor.htm">controller14validar</prop>
+                <prop key="Web14ModificarDoctor.htm">controller14modificar</prop>
+                <prop key="Web15PeliculasGeneros.htm">controller15pelisgeneros</prop>
+                <prop key="Web15DetallesPelicula.htm">controller15detalles</prop>
+                <prop key="Web15CarritoCompra.htm">controller15carrito</prop>
+                <prop key="Web16NombreDepartamentoDao.htm">controller16</prop>  
+                <prop key="Web17ConsultaSeleccionDao.htm">controller17</prop>   
+                <prop key="Web18ConsultasParametrizadas.htm">controller18</prop>
+                <prop key="Web19ModificarDepartamentosDao.htm">controller19</prop>     
+                <prop key="Web20InsertarDepartamentoDao.htm">controller20</prop>     
+                <prop key="Web21EliminarDepartamentosBatch.htm">controller21</prop>
+                <prop key="Web22BuscarEmpleadosOficio.htm">controller22</prop>
+                <prop key="Web23ModificarSalarioPlantilla.htm">controller23</prop>  
+                  
+            </props>
+        </property>
+    </bean>
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />
+
+    <!--
+    The index controller.
+    -->
+    <bean name="indexController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="index" />
+
+    <bean name="pedirNumeroController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="Web04PedirNumero" />    
+   
+        <bean name="pruebaController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="Web09Departamentos" />    
+        
+        <bean name="mostrarSalarioSessionController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="Web12MostrarSalarioEmpleados" />
+        
+       
+         
+</beans>
