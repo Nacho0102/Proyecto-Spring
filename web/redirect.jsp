@@ -134,4 +134,9 @@ servlet but should be the only JSP outside of WEB-INF.
            Modificar Salario Plantilla DAO
         </a>
     </li> 
+     <li>
+        <a href='Web24ClientesDaoSupport.htm'>
+           Insertar Clientes JdbcDaosupport
+        </a>
+    </li> 
 </ol>

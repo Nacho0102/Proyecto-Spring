@@ -21,7 +21,7 @@ public class JdbcClientesDaoSupport extends JdbcDaoSupport implements IClientesD
         String consulta = "INSERT INTO CLIENTES (IDCLIENTE,NOMBRE,DIRECCION) VALUES (?,?,?)";
         
         //siempre un array de Object
-        Object param = new Object[]{idcliente,nombre,direccion};
+        Object[] param = new Object[]{idcliente,nombre,direccion};
         getJdbcTemplate().update(consulta,param);
     }
 

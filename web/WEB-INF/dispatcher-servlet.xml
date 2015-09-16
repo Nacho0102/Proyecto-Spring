@@ -122,6 +122,9 @@
        
        <bean class="controladores.Controller23ModificarSalarioPlantilla"
           id="controller23"/> 
+       
+       <bean class="controladores.Controller24ClientesDaoSupport"
+          id="controller24"/> 
     <!--
     Most controllers will use the ControllerClassNameHandlerMapping above, but
     for the index controller we are using ParameterizableViewController, so we must
@@ -165,6 +168,7 @@
                 <prop key="Web21EliminarDepartamentosBatch.htm">controller21</prop>
                 <prop key="Web22BuscarEmpleadosOficio.htm">controller22</prop>
                 <prop key="Web23ModificarSalarioPlantilla.htm">controller23</prop>  
+                <prop key="Web24ClientesDaoSupport.htm">controller24</prop>
                   
             </props>
         </property>
